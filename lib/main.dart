@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class ScannableTextFormField extends StatefulWidget {
-  final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final InputDecoration? textInputDecoration;
 
   const ScannableTextFormField(
-      {super.key, this.onSaved, this.validator, this.textInputDecoration});
+      {super.key, this.validator, this.textInputDecoration});
 
   @override
   State<ScannableTextFormField> createState() => _ScannableTextFormFieldState();
