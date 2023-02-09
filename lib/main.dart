@@ -10,7 +10,7 @@ class ScannableTextFormField extends StatefulWidget {
   ///
   /// [validator] is a function used to validate the input to the text box when submitted. This is just like the validator from [TextFormField]
   /// [textInputDecoration] is also a passthrough to allow text decoration elements of the [TextFormField] to be customized
-  /// [scanTransformer] is a function that allows scan data to be transformed before it is sent to the text field. This can be useful for transforming data (like parsing an ID from a URL) from the scanned code
+  /// [scanTransformer] is a function that allows scan data to be transformed before it is sent to the text field. This can be useful for transforming data (like parsing an ID from a URL) from the scanned code. This could also be a place where sound could be played if preferred.
   const ScannableTextFormField(
       {super.key,
       this.validator,
@@ -69,7 +69,6 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
                     res = widget.scanTransformer!(res);
                   }
                   _handleScan(res);
-                  //TODO: maybe play sound
                 }
               });
             },
