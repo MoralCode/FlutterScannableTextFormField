@@ -33,7 +33,6 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
 
   void _handleScan(String newValue) {
     setState(() {
-      // _value = newValue;
       myController.text = newValue;
     });
   }
@@ -48,7 +47,6 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
           flex: 1,
           child: TextFormField(
             controller: myController,
-            // The validator receives the text that the user has entered.
             validator: widget.validator,
             decoration: widget.textInputDecoration,
           ),
@@ -80,8 +78,7 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is removed from the
-    // widget tree.
+    // Clean up the controller when the widget is removed from the widget tree.
     myController.dispose();
     super.dispose();
   }
