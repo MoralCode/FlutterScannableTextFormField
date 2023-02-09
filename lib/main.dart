@@ -4,9 +4,18 @@ import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 class ScannableTextFormField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final InputDecoration? textInputDecoration;
+  final String Function(String)? scanTransformer;
 
+  /// Creates a form field with a text box and a button to allow text to be scanned in from a QR code or barcode
+  ///
+  /// [validator] is a function used to validate the input to the text box when submitted. This is just like the validator from [TextFormField]
+  /// [textInputDecoration] is also a passthrough to allow text decoration elements of the [TextFormField] to be customized
+  /// [scanTransformer] is a function that allows scan data to be transformed before it is sent to the text field. This can be useful for transforming data (like parsing an ID from a URL) from the scanned code
   const ScannableTextFormField(
-      {super.key, this.validator, this.textInputDecoration});
+      {super.key,
+      this.validator,
+      this.textInputDecoration,
+      this.scanTransformer});
 
   @override
   State<ScannableTextFormField> createState() => _ScannableTextFormFieldState();
@@ -56,6 +65,9 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
                   ));
               setState(() {
                 if (res is String) {
+                  if (widget.scanTransformer != null) {
+                    res = widget.scanTransformer!(res);
+                  }
                   _handleScan(res);
                   //TODO: maybe play sound
                 }
