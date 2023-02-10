@@ -7,7 +7,7 @@ A form field for text input in [Flutter Forms](https://docs.flutter.dev/cookbook
 ## Usage Example
 
 ```dart
-import 'package:scannabletextformfield/main.dart';
+import 'package:scannabletextformfield/scannabletextformfield.dart';
 
 //somewhere in your widget UI, ideally within a [Form]
 ScannableTextFormField(
