@@ -62,7 +62,10 @@ class _ScannableTextFormFieldState extends State<ScannableTextFormField> {
                     builder: (context) => const SimpleBarcodeScannerPage(),
                   ));
               setState(() {
-                if (res is String) {
+                // in this case if a scan value of -1 comes back, it means the scanner was canceled without scanning anything, so ignore it
+                // currently waiting for the library maintainers to add a more proper callback for this
+                //https://github.com/AmolGangadhare/flutter_barcode_scanner/issues/26
+                if (res is String && res != "-1") {
                   if (widget.scanTransformer != null) {
                     res = widget.scanTransformer!(res);
                   }
