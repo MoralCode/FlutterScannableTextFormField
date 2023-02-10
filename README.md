@@ -1,16 +1,32 @@
 # scannabletextformfield
 
-A new Flutter project.
+A form field for text input in [Flutter Forms](https://docs.flutter.dev/cookbook/forms) that allows data to be scanned in via QR or barcodes in addition to being typed in.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Usage Example
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```dart
+import 'package:scannabletextformfield/main.dart';
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+//somewhere in your widget UI, ideally within a [Form]
+ScannableTextFormField(
+	validator: (value) {
+		if (value == null || value.isEmpty) {
+			return 'A value is required';
+		}
+		//add your own validation here if you want to verify the data being scanned is correct
+		return null;
+	},
+	textInputDecoration: const InputDecoration(
+		border: OutlineInputBorder(),
+		labelText: "Label",
+		hintText: "Placeholder hint text",
+		helperText: 'additional help text',
+	),
+	scanTransformer: (data) => {
+		//Optional: include this propperty if you want to transform the data from scanned codes before it gets entered into the text box, such as extracting an identifier from a URL.
+		return data;
+	}
+)
+```
