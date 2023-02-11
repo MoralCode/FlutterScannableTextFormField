@@ -1,5 +1,7 @@
 # scannabletextformfield
 
+[![Pub Version](https://img.shields.io/pub/v/scannabletextformfield)](https://pub.dev/packages/scannabletextformfield)
+
 A form field for text input in [Flutter Forms](https://docs.flutter.dev/cookbook/forms) that allows data to be scanned in via QR or barcodes in addition to being typed in.
 
 
